@@ -1,0 +1,21 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+
+type Role {
+  id: ID!
+  name: String!
+}
+input IRole {
+  id: ID!
+  name: String!
+}
+
+extend type Query {
+  GetRoles: [Role!]! 
+}
+
+extend type Mutation {
+  saveRole(input: IRole!): String!
+}
