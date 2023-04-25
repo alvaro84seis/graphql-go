@@ -2,6 +2,11 @@
 
 package model
 
+type ICategoria struct {
+	ID   *int    `json:"id,omitempty"`
+	Code *string `json:"code,omitempty"`
+}
+
 type IRole struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`

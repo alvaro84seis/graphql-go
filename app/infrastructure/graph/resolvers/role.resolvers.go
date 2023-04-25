@@ -9,13 +9,7 @@ import (
 	"fmt"
 
 	"github.com/alvaro84seis/gqlgen-todos/app/domain/entity"
-	"github.com/alvaro84seis/gqlgen-todos/app/infrastructure/graph/model"
 )
-
-// SaveRole is the resolver for the saveRole field.
-func (r *mutationResolver) SaveRole(ctx context.Context, input model.IRole) (string, error) {
-	panic(fmt.Errorf("not implemented: SaveRole - saveRole"))
-}
 
 // GetRoles is the resolver for the GetRoles field.
 func (r *queryResolver) GetRoles(ctx context.Context) ([]*entity.Role, error) {

@@ -16,6 +16,3 @@ extend type Query {
   GetRoles: [Role!]! 
 }
 
-extend type Mutation {
-  saveRole(input: IRole!): String!
-}

@@ -7,5 +7,6 @@ import usecase "github.com/alvaro84seis/gqlgen-todos/app/apllication/usecases"
 // It serves as dependency injection for your app, add any dependencies you require here.
 
 type Resolver struct {
-	GetUserByIDUseCase usecase.GetUserByIDUseCase
+	GetUserByIDUseCase     usecase.GetUserByIDUseCase
+	GetCategoryByIDUseCase usecase.GetCategoryByIDUseCase
 }

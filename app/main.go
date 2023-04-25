@@ -6,9 +6,11 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
 	usecase "github.com/alvaro84seis/gqlgen-todos/app/apllication/usecases"
+
 	"github.com/alvaro84seis/gqlgen-todos/app/infrastructure/graph/generated"
 	"github.com/alvaro84seis/gqlgen-todos/app/infrastructure/graph/resolvers"
-	repository "github.com/alvaro84seis/gqlgen-todos/app/infrastructure/persistence/postgres"
+	"github.com/alvaro84seis/gqlgen-todos/app/infrastructure/persistence/postgres"
+	repository_test "github.com/alvaro84seis/gqlgen-todos/app/infrastructure/persistence/postgres_test"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -28,11 +30,17 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// usecases
-	repository := repository.NewRepository()
-	getUserByID := usecase.NewGetUserByID(repository)
+	connectionPostgres := postgres.CreateDbConnection()
+	repositoryPostgres := postgres.NewCategoryRepository(connectionPostgres)
+
+	repositoryTest := repository_test.NewRepository()
+
+	getCategoryByID := usecase.NewGetCategoryByID(repositoryPostgres)
+	getUserByID := usecase.NewGetUserByID(repositoryTest)
 
 	resolver := &resolvers.Resolver{
-		GetUserByIDUseCase: getUserByID,
+		GetUserByIDUseCase:     getUserByID,
+		GetCategoryByIDUseCase: getCategoryByID,
 	}
 
 	// Playground

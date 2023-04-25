@@ -1,0 +1,21 @@
+package postgres_connection
+
+type Migrate struct {
+	connection Connection
+}
+
+func NewMigrate(connection Connection) *Migrate {
+	return &Migrate{connection: connection}
+}
+
+func (m *Migrate) AutoMigrateAll(tables ...interface{}) {
+	db, err := m.connection.GetConnection()
+
+	if err != nil {
+		// log.WithError(err).Fatal(err.Error())
+	}
+	// db = db.AutoMigrate(... tables)
+	if db.Error != nil {
+		// log.WithError(db.Error).Fatal(db.Error.Error())
+	}
+}

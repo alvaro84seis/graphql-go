@@ -1,0 +1,24 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Category {
+  id: Int!
+  code: String!
+  default_label:String!
+  path:String!
+  level:Int!
+  parent_code:String!
+  label_path:String!
+  parent: Category
+}
+
+input ICategoria{
+  id: Int
+  code: String
+}
+
+
+extend type Query {
+  GetCategory(filter: ICategoria!): Category!
+}

@@ -1,4 +1,4 @@
-package repository
+package repository_test
 
 import "github.com/alvaro84seis/gqlgen-todos/app/domain/entity"
 
@@ -17,9 +17,4 @@ func (ur *userRepository) FindByID(id string) (*entity.User, error) {
 		Name:  "John Doe",
 		Email: "john.doe@example.com",
 	}, nil
-}
-
-func (ur *userRepository) Save(user *entity.User) error {
-	// Aquí implementaríamos la lógica para guardar un usuario.
-	return nil
 }

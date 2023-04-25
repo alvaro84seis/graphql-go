@@ -19,6 +19,3 @@ type Query {
   FindByID(id: String): [User!]! 
 }
 
-type Mutation {
-  save(input: IUser!): String!
-}
